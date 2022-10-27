@@ -6,12 +6,12 @@ Provides a set of tools and capabilities to show mini app in Android Application
 ## What is Mini App?
 Here are some [Guides for the Mini App](https://www.w3.org/TR/mini-app-white-paper/#what-is-miniapp )
 
-## App Management 
+## App Management
 Provides a set of tools and capabilities to manage MiniApp SDK in Android Applications
 ### 1.Map SDK
- To be connected and to interact with SDK mini app , Client should be defined method the same as SDK.
- 
-[Note]() : Client must register SDK mini app before 
+To be connected and to interact with SDK mini app , Client should be defined method the same as SDK.
+
+[Note]() : Client must register SDK mini app before
 ``` xml 
     inner class WebViewJavascriptInterface {
         // define function of gatewaySdk
@@ -36,18 +36,18 @@ Provides a set of tools and capabilities to manage MiniApp SDK in Android Applic
     }
 ```
 ### How to Test the Sample SDK
-  #### How to test  
-   1.Run Android Applications 
+#### How to test
+1.Run Android Applications
 
-   2.Register SDK of MiniApp for webView:   
+2.Register SDK of MiniApp for webView:
 ```
     xml webview.addJavascriptInterface(WebViewJavascriptInterface(), "gatewaySdk")
 ```
-   3. WebView load url or WebView load resources of MiniApp
+3. WebView load url or WebView load resources of MiniApp
 ```
         webview.loadUrl("file:///android_asset/index.html")
 ```
-   4.Call method of  SDK of MiniApp to be defined in class [WebViewJavascriptInterface]()
+4.Call method of  SDK of MiniApp to be defined in class [WebViewJavascriptInterface]()
 ``` xml private fun setTestJavascript() {
         webview.loadUrl(
             "javascript:( " +
@@ -57,10 +57,10 @@ Provides a set of tools and capabilities to manage MiniApp SDK in Android Applic
         )
      }
 ```
-   5.Then application is running and connected to Mini App SDK , data will be passed in class [WebViewJavascriptInterface]() 
-   
-   6.You can debug webView , see the [Guides](https://blog.vuplex.com/debugging-webviews)
- ### 2.Management App
+5.Then application is running and connected to Mini App SDK , data will be passed in class [WebViewJavascriptInterface]()
+
+6.You can debug webView , see the [Guides](https://blog.vuplex.com/debugging-webviews)
+### 2.Management App
 Provides a set of services to management mini app in Android Applications. The SDK offers features like checkVersionSDK,checkVersionMiniApp,download resources of mini app, check status of mini app (process,fail).
 For instructions on implementing in an android application
 ### Public methods of MiniAppManagement
@@ -70,37 +70,37 @@ class MiniAppManagement()
 Parameters:  | Description |
 ------------- | -------------
 Context |Context: an Activity Context to access application assets This value cannot be null.
-    
-##init() 
+
+#### init()
 initialize class MiniAppManagement
 ```
  miniAppManagement.init()
 ```
-##stop()
+####stop()
 remove class MiniAppManagement
 ```
   miniAppManagement.stop()
 ```
-##checkVersionSDKMiniApp()
+####checkVersionSDKMiniApp()
 provides a function to check version sdk of Mini app
 ```
  val isUpdate:boolean =  miniAppManagement.checkVersionSDKMiniApp()
 ```
-##currentVersionSDKMiniApp()
+####currentVersionSDKMiniApp()
 provides a function to get current version sdk of Mini app
 ```
   val curVersion =  miniAppManagement.currentVersionSDKMiniApp()
 
 ```
-##isExistMiniLocal()
+####isExistMiniLocal()
 provides a function to check Mini app which is downloaded in local EXTERNAL_STORAGE
 ``` base 
 #MINI_APP_ID : UNIQUE of MINIAPP in databse
 
 val isExist:boolean =  miniAppManagement.isExistMiniLocal(MINI_APP_ID)
 ```
-##miniPermissionRequest()
-Mini apps are able to make requests which are defined by the Mini App SDK. 
+####miniPermissionRequest()
+Mini apps are able to make requests which are defined by the Mini App SDK.
 ``` base
 #MiniAppPermissionType has been deprecated
     enum class MiniAppPermissionType{
@@ -114,12 +114,12 @@ Mini apps are able to make requests which are defined by the Mini App SDK.
     }
  val listMiniAppPermissionType:List<MiniAppPermissionType>?=  miniAppManagement.miniPermissionRequest(VERSION_SDK_MINI_APP)
 ```
-##setUserInfoBridge()
+####setUserInfoBridge()
 The mini app is able to request data about the current user from your App.
 ```
  miniAppManagement.setUserInfoBridge(user_id:String,phone:String,token:String)
 ```
-##Send Native Events 
+####Send Native Events
 Your app are able to send events to Mini App. These events include things like external webview close, pause, resume ,destroy from your app
 ``` base
 #MiniAppNativeInterface has been deprecated
@@ -135,7 +135,7 @@ Your app are able to send events to Mini App. These events include things like e
  miniAppManagement.sendNativeEvent(NativeEventType.MINIAPP_CLOSE)
 
 ```
-## ListMiniApp
+#### ListMiniApp
 Your app use [miniAppManagement.listMiniApp]() if you want a list of all Mini Apps:
 ```
 CoroutineScope(Dispatchers.IO).launch {
@@ -147,7 +147,7 @@ CoroutineScope(Dispatchers.IO).launch {
     }
 ```
 
-##Downloaded Mini App 
+####Downloaded Mini App
 In Your App, we can get the downloaded resources of Mini App
 
 use [MiniAppFileDownloader]()
@@ -173,4 +173,3 @@ Log.e("MiniApp", "There was an error retrieving the list", e)
 
 ```
 ###3.Security
-####MiniAppSdkException
