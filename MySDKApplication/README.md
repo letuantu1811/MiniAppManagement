@@ -76,30 +76,30 @@ initialize class MiniAppManagement
 ```
  miniAppManagement.init()
 ```
-####stop()
+#### stop()
 remove class MiniAppManagement
 ```
   miniAppManagement.stop()
 ```
-####checkVersionSDKMiniApp()
+#### checkVersionSDKMiniApp()
 provides a function to check version sdk of Mini app
 ```
  val isUpdate:boolean =  miniAppManagement.checkVersionSDKMiniApp()
 ```
-####currentVersionSDKMiniApp()
+#### currentVersionSDKMiniApp()
 provides a function to get current version sdk of Mini app
 ```
   val curVersion =  miniAppManagement.currentVersionSDKMiniApp()
 
 ```
-####isExistMiniLocal()
+#### isExistMiniLocal()
 provides a function to check Mini app which is downloaded in local EXTERNAL_STORAGE
 ``` base 
 #MINI_APP_ID : UNIQUE of MINIAPP in databse
 
 val isExist:boolean =  miniAppManagement.isExistMiniLocal(MINI_APP_ID)
 ```
-####miniPermissionRequest()
+#### miniPermissionRequest()
 Mini apps are able to make requests which are defined by the Mini App SDK.
 ``` base
 #MiniAppPermissionType has been deprecated
@@ -114,12 +114,12 @@ Mini apps are able to make requests which are defined by the Mini App SDK.
     }
  val listMiniAppPermissionType:List<MiniAppPermissionType>?=  miniAppManagement.miniPermissionRequest(VERSION_SDK_MINI_APP)
 ```
-####setUserInfoBridge()
+#### setUserInfoBridge()
 The mini app is able to request data about the current user from your App.
 ```
  miniAppManagement.setUserInfoBridge(user_id:String,phone:String,token:String)
 ```
-####Send Native Events
+#### Send Native Events
 Your app are able to send events to Mini App. These events include things like external webview close, pause, resume ,destroy from your app
 ``` base
 #MiniAppNativeInterface has been deprecated
@@ -147,7 +147,7 @@ CoroutineScope(Dispatchers.IO).launch {
     }
 ```
 
-####Downloaded Mini App
+#### Downloaded Mini App
 In Your App, we can get the downloaded resources of Mini App
 
 use [MiniAppFileDownloader]()
@@ -172,4 +172,4 @@ Log.e("MiniApp", "There was an error retrieving the list", e)
 }
 
 ```
-###3.Security
+### 3.Security
