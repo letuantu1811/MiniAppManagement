@@ -92,6 +92,12 @@ provides a function to get current version sdk of Mini app
   val curVersion =  miniAppManagement.currentVersionSDKMiniApp()
 
 ```
+#### currentVersionMiniApp()
+provides a function to get current version sdk of Mini app
+```
+  val curVersionMiniApp =  miniAppManagement.currentVersionMiniApp(MINI_APP_ID)
+
+```
 #### isExistMiniLocal()
 provides a function to check Mini app which is downloaded in local EXTERNAL_STORAGE
 ``` base 
@@ -152,6 +158,20 @@ In Your App, we can get the downloaded resources of Mini App
 
 use [MiniAppFileDownloader]()
 ```base
+#MiniAppFileDownloader has been deprecated
+    public interface MiniAppFileDownloader{
+         fun onStartFileDownload(
+      fileName: String,
+      url: String,
+      headers: Map<String, String>,
+      onDownloadSuccess: (String) -> Unit,
+      onDownloadFailed: (Error) -> Unit
+  )
+      fun onDownloadError(
+         statusCode:String,
+         error:String,
+  )
+    }
 CoroutineScope(Dispatchers.IO).launch {
 try {
 if(!miniAppManagement.isExistMiniLocal(MINI_APP_ID)){
@@ -164,6 +184,12 @@ val miniAppExternalUrlLoader = miniAppManagement.miniAppExternalUrlLoader(MINI_A
       onDownloadFailed: (Error) -> Unit
   ) {
          //.. Download the file
+    }
+      override fun onDownloadError(
+      statusCode:String,
+         error:String,
+  ) {
+         //.. error downloaded
     }
 })}
 } catch(e: MiniAppSdkException) {
